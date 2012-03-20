@@ -1,4 +1,6 @@
 StanfordNLP::Application.routes.draw do
+  get "browse/test"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
