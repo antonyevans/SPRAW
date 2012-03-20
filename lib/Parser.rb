@@ -9,10 +9,12 @@ class Parser
 
 
     def initialize #creates a new parser
-		@parser = LexicalizedParser.new("/home/andrew/development/naturalparser/lib/stanford-parser/englishPCFG.ser.gz") #relative addresses don't work here, so I always have to remember to change the path when deploying, any way aroun this?
+		  logger.debug("ran initializer")
+		  @parser = LexicalizedParser.new("/stanford-parser/englishPCFG.ser.gz") #relative addresses don't work here, so I always have to remember to change the path when deploying, any way aroun this?
     end
 
     def getparsedsentence(input) #takes a sentence and returns a parsed sentence object ('Sentence.rb')
+    	logger.debug("ran getparsedsentance")
     	@parser.parse(input) #loads the input into the parser
     	@tree = @parser.getBestParse #gets the statistically best parse from the parser
 
@@ -29,17 +31,20 @@ class Parser
     end
 
     def getparsedstring(input) #returns a string representing a parsed sentence
+    	logger.debug("ran get parsedstring")
     	s = getparsedsentence(input) 
     	s.to_s
     end
 
     def gettree(input)
+    	logger.debug("ran get tree")
     	@parser.parse(input) #loads the input into the parser
     	@tree = @parser.getBestParse #gets the statistically best parse from the parser
     	@wordtree = Wordtree.new(@tree, 0)
     end
 
     def t(input)
+    	logger.debug("ran t")
     	@parser.parse(input) #loads the input into the parser
     	@tree = @parser.getBestParse #gets the statistically best parse from the parser
     end

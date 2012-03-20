@@ -1,5 +1,6 @@
 class BrowseController < ApplicationController
   def test
+#    logger.debug("debug message")
     unless params[:input].nil? || params[:input] == ""
       @outputstring = $parser.getparsedstring(params[:input])
       @outputwordtree = "Coming Soon!"
